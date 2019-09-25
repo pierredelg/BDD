@@ -1,0 +1,139 @@
+/*==============================================================*/
+/* Nom de SGBD :  Microsoft Access 2000                         */
+/* Date de création :  11/09/2019 16:45:19                      */
+/*==============================================================*/
+
+
+alter table APPARTIENT_A
+   drop constraint FK_APPARTIE_APPARTIEN_CLIENT;
+
+alter table APPARTIENT_A
+   drop constraint FK_APPARTIE_APPARTIEN_GROUPE;
+
+alter table ETAPE
+   drop constraint FK_ETAPE_CONTIENT_CIRCUIT;
+
+alter table ETAPE
+   drop constraint FK_ETAPE_EST_VILLE;
+
+alter table VOYAGE
+   drop constraint FK_VOYAGE_COMPREND_CIRCUIT;
+
+alter table VOYAGE
+   drop constraint FK_VOYAGE_PARTICIPE_GROUPE;
+
+drop table APPARTIENT_A;
+
+drop table CIRCUIT;
+
+drop table CLIENT;
+
+drop table ETAPE;
+
+drop table GROUPE;
+
+drop table VILLE;
+
+drop table VOYAGE;
+
+/*==============================================================*/
+/* Table : APPARTIENT_A                                         */
+/*==============================================================*/
+create table APPARTIENT_A
+(
+    CLNO                 INTEGER         not null,
+    GNO                  INTEGER         not null,
+constraint PK_APPARTIENT_A primary key (CLNO, GNO)
+);
+
+/*==============================================================*/
+/* Table : CIRCUIT                                              */
+/*==============================================================*/
+create table CIRCUIT
+(
+    CNO                  INTEGER         not null,
+    REFERENCE            NOTE,
+    TITRE                NOTE,
+constraint PK_CIRCUIT primary key (CNO)
+);
+
+/*==============================================================*/
+/* Table : CLIENT                                               */
+/*==============================================================*/
+create table CLIENT
+(
+    CLNO                 INTEGER         not null,
+    PRENOM               NOTE,
+    NOM                  NOTE,
+constraint PK_CLIENT primary key (CLNO)
+);
+
+/*==============================================================*/
+/* Table : ETAPE                                                */
+/*==============================================================*/
+create table ETAPE
+(
+    VNO                  INTEGER         not null,
+    CNO                  INTEGER         not null,
+    ORDRE                INTEGER
+);
+
+/*==============================================================*/
+/* Table : GROUPE                                               */
+/*==============================================================*/
+create table GROUPE
+(
+    GNO                  INTEGER         not null,
+    NOMBRE_DE_PERSONNES  NUMERIC,
+constraint PK_GROUPE primary key (GNO)
+);
+
+/*==============================================================*/
+/* Table : VILLE                                                */
+/*==============================================================*/
+create table VILLE
+(
+    VNO                  INTEGER         not null,
+    NOM_VILLE            NOTE,
+    PAYS                 NOTE,
+    POPULATION           NOTE,
+constraint PK_VILLE primary key (VNO)
+);
+
+/*==============================================================*/
+/* Table : VOYAGE                                               */
+/*==============================================================*/
+create table VOYAGE
+(
+    VONO                 INTEGER         not null,
+    CNO                  INTEGER         not null,
+    GNO                  INTEGER         not null,
+    DATE_DE_DEBUT        DATE,
+    DATE_DE_FIN          DATE,
+constraint PK_VOYAGE primary key (VONO)
+);
+
+alter table APPARTIENT_A
+   add constraint FK_APPARTIE_APPARTIEN_CLIENT foreign key (CLNO)
+      references CLIENT (CLNO);
+
+alter table APPARTIENT_A
+   add constraint FK_APPARTIE_APPARTIEN_GROUPE foreign key (GNO)
+      references GROUPE (GNO);
+
+alter table ETAPE
+   add constraint FK_ETAPE_CONTIENT_CIRCUIT foreign key (CNO)
+      references CIRCUIT (CNO);
+
+alter table ETAPE
+   add constraint FK_ETAPE_EST_VILLE foreign key (VNO)
+      references VILLE (VNO);
+
+alter table VOYAGE
+   add constraint FK_VOYAGE_COMPREND_CIRCUIT foreign key (CNO)
+      references CIRCUIT (CNO);
+
+alter table VOYAGE
+   add constraint FK_VOYAGE_PARTICIPE_GROUPE foreign key (GNO)
+      references GROUPE (GNO);
+

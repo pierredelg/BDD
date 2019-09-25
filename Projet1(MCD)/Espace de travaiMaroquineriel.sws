@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?PowerDesigner signature="Workspace" version="15.0.0.2613"?>
+<!-- Veuillez ne pas modifier ce fichier -->
+
+<Workspace>
+	<Local Expanded="Yes">
+		<Model Expanded="Yes" ID="{00E5744E-A93C-470C-B1E8-1C4780A0EE31}" Name="Maroquinerie" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="file:///E|/Maroquinerie2.mpd"/>
+		<Model Expanded="Yes" ID="{79AFED69-74F0-4726-80FA-230062639189}" Name="Maroquinerie" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="file:///E|/Maroquinerie.mcd"/>
+		<Model Expanded="Yes" ID="{4DAFADF9-BAE8-4996-ABFF-69267F9D17F4}" Name="MaroquinerieFinal" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="file:///E|/MaroquinerieFinal.mpd"/>
+	</Local>
+	<BrowserModule Name="Référentiel"/>
+</Workspace>
